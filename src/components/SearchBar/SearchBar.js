@@ -42,18 +42,19 @@ class SearchBar extends Component {
     }
 
     handleSearch(event) {
-      this.props.searchYelp(this.term, this.location, this.sortBy);
+      this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+
       event.preventDefault();
     }
 
   renderSortByOptions() {
     return Object.keys(this.sortByOptions).map(sortByOption => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
-      return (<li 
-      className={this.getSortByClass(sortByOptionValue)} 
-      key={sortByOptionValue}
-      onClick={this.handleSortByChange}>
-      {sortByOption} </li>);
+      return (<li className={this.getSortByClass(sortByOptionValue)}
+                  key={sortByOptionValue}
+                  onClick={this.handleSortByChange}>
+                  {sortByOption} 
+              </li>);
     });
   }
   render() {
